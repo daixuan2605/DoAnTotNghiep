@@ -1,0 +1,38 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <a href="@Url.Action("Index","Home")"><img src="~/wwwroot/images/logo.png" alt=""></a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                    <li><a href="@Url.Action("Index","GetProduct")">Sản phẩm</a></li>
+                    <li><a href="@Url.Action("Index","News")">Tin tức</a></li>
+                    <li><a href="@Url.Action("Index","Introduce")">Giới thiệu</a></li>
+                    <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-lg-3">
+            <div class="header__cart">
+                <ul>
+                    <li><a href="/Checkout/Index"><i class="fa fa-shopping-bag"></i> <span>@ViewBag.cartpronumber</span></a></li>
+                </ul>
+                @if (ViewBag.cartpronumber == 0)
+                {
+                    <div class="header__cart__price">Chưa có sản phẩm</div>
+                }
+                else
+                {
+                    <div class="header__cart__price">Tổng: <span>@ViewBag.cartpronumber</span> sản phẩm</div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>

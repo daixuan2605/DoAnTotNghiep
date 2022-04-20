@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MineFruits.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Quản lý danh mục</h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Create","ManageCategory")">Thêm danh mục</a></li>
+                        @*<li class="breadcrumb-item active" aria-current="page">Quản lý danh mục</li>*@
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basic Tables start -->
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                Hiển thị tất cả danh mục sản phẩm
+            </div>
+            <div class="card-body">
+                <table class="table" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Mã danh mục</th>
+                            <th>Tên danh mục</th>
+                            <th>Ngày cập nhật</th>
+                            <th class="text-right">Hành động</th>
+                            @*<th>Status</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.CategoryID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UpdateDate)</td>
+                                <td class="text-right">
+                                    <a href="@Url.Action("Edit", "ManageCategory", new { id = item.CategoryID })"
+                                       class="btn btn-sm bg-primary-light mr-2">
+                                        <i class="far fa-edit mr-1"></i> Sửa
+                                    </a>
+                                    <a href="@Url.Action("Delete", "ManageCategory", new { id = item.CategoryID })"
+                                       class="btn btn-sm bg-danger-light mr-2">
+                                        <i class="far fa-trash-alt mr-1"></i> Xoá
+                                    </a>
+                                </td>
+                                @*<td>
+                                    <span class="badge bg-success">Active</span>
+                                </td>*@
+                            </tr>
+                        }
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+    <!-- Basic Tables end -->
+</div>
+
+<!-- <link rel="stylesheet" href="assets/vendors/jquery-datatables/jquery.dataTables.min.css"> -->
+<link rel="stylesheet" href="~/Areas/Admin/Assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="~/Areas/Admin/Assets/vendors/fontawesome/all.min.css">
+<style>
+    table.dataTable td {
+        padding: 15px 8px;
+    }
+
+    .fontawesome-icons .the-icon svg {
+        font-size: 24px;
+    }
+</style>
+
+<script src="~/Areas/Admin/Assets/vendors/jquery/jquery.min.js"></script>
+<script src="~/Areas/Admin/Assets/vendors/jquery-datatables/jquery.dataTables.min.js"></script>
+<script src="~/Areas/Admin/Assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js"></script>
+<script src="~/Areas/Admin/Assets/vendors/fontawesome/all.min.js"></script>
+<script>
+    // Jquery Datatable
+    let jquery_datatable = $("#table1").DataTable()
+</script>
+

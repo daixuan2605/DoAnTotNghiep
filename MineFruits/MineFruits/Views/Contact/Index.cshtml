@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+@section scripts{
+    <script src="~/wwwroot/js/contact.js"></script>
+}
+
+<section class="breadcrumb-section set-bg">
+    <img src="~/wwwroot/images/breadcrumb.jpg" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Liên hệ</h2>
+                    <div class="breadcrumb__option">
+                        <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                        <span>Liên hệ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Contact Section Begin -->
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_phone"></span>
+                    <h4>Số điện thoại</h4>
+                    <p>0981497726</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_pin_alt"></span>
+                    <h4>Địa chỉ</h4>
+                    <p>Định Bình - Yên Định - Thanh Hóa</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_clock_alt"></span>
+                    <h4>Thời gian hoạt động</h4>
+                    <p>07:00 am to 22:00 pm</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                <div class="contact__widget">
+                    <span class="icon_mail_alt"></span>
+                    <h4>Email</h4>
+                    <p>Minefruits@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->
+<!-- Map Begin -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/place/C%E1%BA%A7u+Xi/19.9555222,105.6608905,17.25z/data=!4m5!3m4!1s0x3136f3a1b1cbdd6b:0x8b0fde4635400175!8m2!3d19.9554413!4d105.6625893"
+            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <div class="map-inside">
+        <i class="icon_pin"></i>
+        <div class="inside-widget">
+            <h4>Yên Định</h4>
+            <ul>
+                <li>SDT: 091497726</li>
+                <li>Địa chỉ: Quốc lộ 45, Cầu Xi, Định Bình, Yên Định, Thanh Hóa</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Map End -->
+<!-- Contact Form Begin -->
+<div class="contact-form spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact__form__title">
+                    <h2>Liên hệ với chúng tôi</h2>
+                </div>
+            </div>
+        </div>
+        <form action="#">
+            @{ Html.RenderAction("_DC_LienHe", "Home"); }
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <button type="submit" id="btnSend" class="site-btn">Gửi liên hệ</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Contact Form End -->

@@ -1,0 +1,90 @@
+﻿@model MineFruits.Models.Account
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from truelysell-admin.dreamguystech.com/template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 14:22:17 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" href="//theme.hstatic.net/1000141988/1000763324/14/favicon.png?v=294" type="image/png">
+    <title>Đăng nhập quản trị</title>
+
+    <!-- Favicons -->
+    <!-- <link rel="shortcut icon" href="assets/img/favicon.png" /> -->
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="~/Areas/Asset/plugins/fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/Areas/Asset/plugins/fontawesome/css/all.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="~/Areas/Asset/plugins/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/Areas/Asset/css/admin.css" />
+    <link rel="stylesheet" href="~/Areas/Asset/css/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            Đăng nhập trang quản trị <br />
+                            <span>MineFruits</span>
+                        </h5>
+
+                        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-signin" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.Label("inputUsername", "Tên đăng nhập", new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Nhập tên đăng nhập", @autofocus = "true" })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                @if (ViewBag.ErrorUsername != null)
+                                {
+                                    <p class="text-danger">@ViewBag.ErrorUsername</p>
+                                }
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("inputPassword", "Mật khẩu", new { @class = "control-label" })
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Nhập mật khẩu", @autofocus = "true", @type = "password" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                @if (ViewBag.ErrorPassword != null)
+                                {
+                                    <p class="text-danger">@ViewBag.ErrorPassword</p>
+                                }
+                            </div>
+                            <div class="form-group">
+                                @if (ViewBag.FailedMessage != null)
+                                {
+                                    <p class="text-danger">@ViewBag.FailedMessage</p>
+                                }
+                            </div>
+                            <button class="btn btn-lg  btn-block text-uppercase" type="submit">Đăng nhập</button>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Areas/Asset/js/jquery-3.5.0.min.js"></script>
+    <script src="~/Areas/Asset/js/popper.min.js"></script>
+    <script src="~/Areas/Asset/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="~/Areas/Asset/js/admin.js"></script>
+</body>
+</html>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

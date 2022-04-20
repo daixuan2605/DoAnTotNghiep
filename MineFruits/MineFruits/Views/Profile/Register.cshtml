@@ -1,0 +1,115 @@
+﻿@model MineFruits.Models.Account
+
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+
+<section class="breadcrumb-section set-bg">
+
+    <div class="container">
+        <img src="~/wwwroot/images/breadcrumb.jpg" alt="">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Blog</h2>
+                    <div class="breadcrumb__option">
+                        <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                        <span>Đăng nhập</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="user-form-part">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <div class="user-form-card">
+                    <div class="user-form-title">
+                        <h2>Đăng ký</h2>
+                        <p>Điền đầy đủ thông tin đăng ký của bạn</p>
+                    </div>
+                    <form class="user-form" action="@Url.Action("Register","Profile")" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên đăng nhập" } })
+                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            @if (ViewBag.ErrorSign != null)
+                            {
+                                <p class="text-danger">@ViewBag.ErrorSign</p>
+                            }
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập họ tên" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập địa chỉ email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mật khẩu" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                        @*<div class="form-group">
+            @Html.EditorFor(model => model.NhapLaiMatKhau, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập lại mật khẩu" } })
+            @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
+        </div>*@
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập số điện thoại" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập địa chỉ" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <input type="hidden" name="Status" value="true" />
+                        <input type="hidden" name="Power" value="0" />
+                        
+                        <input type="hidden" name="CreateDate" value=@DateTime.Now.ToString() />
+                        <div id="divcaptch" data-sitekey="6Lc6858dAAAAANA-n_obwMsykrbQ3Rvz1hZDrapu" style="width:100%; ">
+                        </div>
+                        <p class="text-danger">@ViewBag.Message</p>
+                        @*<span style="display:inline-block; font-size:20px;padding:10px; color:#DC3545;">
+
+        </span>*@
+                        <br />
+                        <div class="form-button">
+                            <button type="submit">Đăng ký</button>
+                        </div>
+                    </form>
+                    <div class="user-form-remind">
+                        <p>Bạn đã có tài khoản?<a href="@Url.Action("Login","Profile") ">Đăng nhập</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        var onloadcallback = function () {
+            grecaptcha.render('divcaptch', {
+                //  'sitekey': '6ld0k3cdaaaaaj5axbz26ieqtwykfbrrol4nk3to',
+                'callback': function (response) {
+                    $('txtcaptcha').val('t');
+                }
+            });
+        };
+
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadcallback&render=explicit">
+    </script>
+}
+

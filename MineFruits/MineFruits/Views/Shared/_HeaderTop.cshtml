@@ -1,0 +1,43 @@
+﻿<div class="header__top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="header__top__left">
+                    <ul>
+                        <li><i class="fa fa-envelope"></i> Minefruits@gmail.com</li>
+                        <li>Cửa hàng trái cây chất lượng số 1 Việt Nam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="header__top__right">
+                    <div class="header__top__right__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                    </div>
+                    @if (Session["TaiKhoan"] == null)
+                    {
+                        <div class="header__top__right__language">
+                            <a href="@Url.Action("Register","Profile")" style="color: black; font-size: 14px"><i class="fa fa-user" style="margin-right: 6px"></i> Đăng ký</a>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <a href="@Url.Action("Login","Profile")"><i class="fa fa-user"></i> Đăng nhập</a>
+                        </div> 
+                     }
+                    else
+                    {
+                        <div class="header__top__right__language">
+                            <a href="@Url.Action("Index","Profile")" style="color: black; font-size: 14px"><i class="fa fa-user" style="margin-right: 6px"></i> @Model.Name</a>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <a href="@Url.Action("Logout","Profile")">Đăng xuất</a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

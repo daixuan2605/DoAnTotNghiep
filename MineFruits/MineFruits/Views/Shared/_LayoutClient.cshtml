@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Mine Fruits">
+    <meta name="keywords" content="Mine, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mine Fruits</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/wwwroot/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/css/style.css" type="text/css">
+    @RenderSection("styles", required: false)
+</head>
+
+<body>
+    <!-- Header Section Begin -->
+    <header class="header">
+        @{ Html.RenderAction("_HeaderTop", "Base"); }
+
+        @{ Html.RenderAction("_HeaderMid", "Base"); }
+
+    </header>
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                @{ Html.RenderAction("_Categories", "Base"); }
+
+                @{ Html.RenderAction("_Search", "Base"); }
+
+
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div id="AlertBox" class="alert @TempData["AlertType"] hidden">@TempData["AlertMessage"]</div>
+
+    }
+
+    @RenderBody()
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="./index.html"><img src="~/wwwroot/images/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Địa chỉ: Định Bình - Yên Định - Thanh Hóa</li>
+                            <li>Số điện thoại: +84 981497726</li>
+                            <li>Email: Minefruits@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1" style="margin-left: 3%">
+                    <div class="footer__widget" style="padding-left: 60px">
+                        <h6>Chính sách và hỗ trợ</h6>
+                        <ul>
+                            <li><a href="#">Chính sách bảo mật thông tin</a></li>
+                            <li><a href="#">Quy định và hình thức thanh toán</a></li>
+                            <li><a href="#">Chính sách thành viên MineFruits</a></li>
+                            <li><a href="#">Chính sách đổi trả</a></li>
+                            <li><a href="#">Chính sách vận chuyển</a></li>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="#">Hướng dẫn mua hàng</a></li>
+                            <li><a href="#">Hệ thống cửa hàng</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12" style="margin-left: 5.2%">
+                    <div class="footer__widget">
+                        <h6>Đăng ký nhận thông tin khuyến mãi</h6>
+                        <p>Nhập email để nhận thêm thông tin khuyến mãi từ cửa hàng</p>
+                        <form action="#">
+                            <input type="text" placeholder="Nhập email ...">
+                            <button type="submit" class="site-btn">Đăng ký</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+                                <script>document.write(new Date().getFullYear());</script> - Cửa hàng trái cây Mine Fruits | Hệ thống trái cây chất lượng Việt Nam
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment"><img src="~/wwwroot/images/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="~/wwwroot/js/jquery-3.3.1.min.js"></script>
+    <script src="~/wwwroot/js/bootstrap.min.js"></script>
+    <script src="~/wwwroot/js/jquery.nice-select.min.js"></script>
+    <script src="~/wwwroot/js/jquery-ui.min.js"></script>
+    <script src="~/wwwroot/js/jquery.slicknav.js"></script>
+    <script src="~/wwwroot/js/mixitup.min.js"></script>
+    <script src="~/wwwroot/js/owl.carousel.min.js"></script>
+    <script src="~/wwwroot/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+
+</html>

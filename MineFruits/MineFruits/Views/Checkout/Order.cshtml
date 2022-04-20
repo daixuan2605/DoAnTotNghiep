@@ -1,0 +1,75 @@
+﻿
+@model List<MineFruits.Models.CartItem>
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+@section styles{
+    <link href="~/wwwroot/css/custom/checkout.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/custom/Order.css" rel="stylesheet" />
+}
+<section class="inner-section checkout-part" style="margin-top: 50px">
+    <div class="container">
+        <div class="row">
+            <form class="col-lg-6 alert-info infor-customer formOrder" action="/Checkout/Order" method="post">
+                <h4>Thông Tin Giao Hàng</h4>
+                @{ Html.RenderAction("_DC_GiaoHang", "Home"); }
+            </form>
+            <div class="col-lg-5 alert-info infor-customer order-detail">
+                <h4>Thông Tin Đơn Hàng</h4>
+                <div class="infor-order">
+                    @foreach (var item in Model)
+                    {
+                        <div class="infor-order-detail">
+                            <p class="row_infor">
+                                <b style="color: black;">@item.Amount <i class="fas fa-times"></i></b>
+                                <span><a href="@Url.Action("Detail", "Product", new { id = item.Product.ProductID })" class="row_infor-link">@item.Product.ProductName</a></span>
+                            </p>
+                            <span class="row_price">@string.Format("{0:#,###}", item.Product.Price) VND</span>
+                        </div>
+                    }
+                </div>
+                <div class="form_infor-input infor-order-detail text-black-80">
+                    <label>Tổng tiền:</label>
+                    <span>@ViewBag.sumTotal</span>
+                </div>
+            </div>
+        </div>
+        <div class="row button-order">
+            <div class="col-lg-3 col-md-5 my-2">
+                <a href="/Home/Index" class="btn btn-inline">Quay lại mua hàng</a>
+            </div>
+            <div class="col-lg-7 col-sm-1"></div>
+            <div class="col-lg-2 col-sm-5 my-2">
+                <button class="btn btn-inline orderbtn1">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var orderbtn1 = document.querySelector('.orderbtn1');
+    var tenKH = document.querySelector('#firstname');
+    var diaChi = document.querySelector('#address');
+    var diaChiArea = document.querySelector('#DcNhanHang');
+    var yeuCauKhac = document.querySelector('#GhiChu');
+    var soDienThoai = document.querySelector('#mobile');
+    var formOrder = document.querySelector('.formOrder');
+    orderbtn1.addEventListener('click', () => {
+        if (tenKH.value == '') {
+            alert('Vui lòng nhập tên của bạn')
+        }
+        else if (diaChi.value == '') {
+            alert('Vui lòng nhập địa chỉ')
+        }
+        else if (soDienThoai.value == '') {
+            alert('Số điện thoại nhập không đúng')
+        }
+        else {
+            formOrder.submit();
+            alert('Đặt hàng thành công');
+        }
+    })
+</script>
+
+
+
